@@ -1,6 +1,6 @@
 # gehco
 ## Table of Content
-  - study data
+  - study data: Global Electrical Heterogeneity and Clinical Outcomes NCT03210883 https://clinicaltrials.gov/ct2/show/NCT03210883
   - STATA code for statistical analyses
   
 ### Authors
