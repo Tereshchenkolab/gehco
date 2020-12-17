@@ -1,6 +1,6 @@
 ***STATA version 16
 ***STATA code written by Larisa Tereshchenko 
-***October 2020
+***October-December 2020
 ***analysis of GEHCO study data
 
 use "your_datafile_imputed20.dta"
@@ -62,7 +62,7 @@ mi passive: egen znidnum = std( nid_numerator )
 mi passive: egen zTpTe = std( TpeaktoTend_ms )
 
 
-***survival analysis with VTVF outcome model 1
+***survival analysis  model 1
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place
@@ -89,47 +89,180 @@ mi estimate, eform("Haz. Ratio") : stcox age ib2.sex i.race i.mbeat3 i.place zbu
 mi estimate, eform("Haz. Ratio") : stcox age ib2.sex i.race i.mbeat3 i.place zegfr
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zvtzone
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zvfzone
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place znidnum
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zaQRSTa
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zSAI
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zaSVGaz
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zaSVGel
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.progr
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zHR
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zRR
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zQTch i.PVCany i.PVCdistort zRR
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zQTcb i.PVCany i.PVCdistort zRR
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zQTcf i.PVCany i.PVCdistort zRR
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zQRS
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place  i.PVCany i.PVCdistort zRR zaQRSTa
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place  i.PVCany i.PVCdistort zRR zpQRSTa
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zSAI
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zVMQTi
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaSVGaz 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGaz 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib1.qaSVGaz
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib1.q4aSVGaz
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaSVGel 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGel 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaSVGmag 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGmag 
+how_many_imputations
 
 ***model 2
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB ib2.mi
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB ib2.revascularization
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB ib2.ccbs
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.AldosteroneAnt
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zbun
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.icd_type
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB ib2.atp
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB ib2.vt_zone_option
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zvtzone
+how_many_imputations
 mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zvfzone
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB znidnum
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zaQRSTa
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zSAI
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zaSVGaz
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zaSVGel
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zSVGmag
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.progr
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB  zHR
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.PVCany
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zQTch
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zQRS
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zaQRSTa
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zpQRSTa
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zSAI
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zVMQTi
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zaSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zpSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany ib1.qaSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany ib1.q4aSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zaSVGel
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zpSVGel
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zaSVGmag
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB zRR i.PVCdistort i.PVCany zpSVGmag
+how_many_imputations
+
 
 ***model 3
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.mi
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.revascularization
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.ccbs
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.AldosteroneAnt
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zbun
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.atp
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.vt_zone_option
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone znidnum
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaSVGaz
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaSVGel
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaQRSTa
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zSAI
-mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zSVGmag
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.mi
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.revascularization
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.ccbs
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr i.AldosteroneAnt
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zbun
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.atp
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.vt_zone_option
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zHR
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr i.PVCany
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zRR i.PVCdistort i.PVCany zQRS
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zRR i.PVCdistort i.PVCany zQTch
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaQRSTa
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpQRSTa
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaSVGel
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGel
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany ib1.qaSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany ib1.q4aSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zSAI
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zVMQTi
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaSVGmag
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGmag
+how_many_imputations
+
+
+***model 4 in addition add QRS, QTch, RR 
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch 
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch ib2.mi
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch ib2.revascularization
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch ib2.ccbs
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch i.AldosteroneAnt
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch zbun
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch ib2.atp
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zHR i.PVCdistort i.PVCany zQRS zQTch ib2.vt_zone_option
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zaQRSTa
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zpQRSTa
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zaSVGel
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zpSVGel
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zaSVGmag
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zpSVGmag
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zSAI
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zVMQTi
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zaSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch zpSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch ib1.qaSVGaz
+how_many_imputations
+mi estimate, eform("Haz. Ratio") : stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zQRS zQTch ib1.q4aSVGaz
+how_many_imputations
 
 ***difference in point estimates test 
 ***difference in model1
@@ -137,221 +270,377 @@ mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place, nohr
-di (-.1257723 - (.4787754 ))/(sqrt((.0489931)^2+(.0573566 )^2))
-di (.4868499 - (.1569927 ))/(sqrt((.1310206)^2+(.1269013 )^2))
-di ( .3525988- (.1431337 ))/(sqrt(( .1510923)^2+(.1876593 )^2))
+di ( -.1264623  - ( .4776647 ))/(sqrt((.0490502)^2+(.0574782 )^2))
+di (.4898189 - (.1530541 ))/(sqrt((.1310314)^2+(.1268795)^2))
+di (.3706412 - ( .1201702 ))/(sqrt(( .1508992)^2+(.1848231)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.cm, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.cm, nohr
-di ( .2445938  - (.3790418 ))/(sqrt((.1074786)^2+(.1105025 )^2))
+di (.2181661  - (.3565288 ))/(sqrt(( .1161431)^2+(.1137744)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.diabetes, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.diabetes, nohr
-di ( -.0094346  - ( .5913449 ))/(sqrt(( .0919144)^2+( .0942881  )^2))
+di ( -.0124301 - ( .594895))/(sqrt((.0918996)^2+( .0943145)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.af, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.af, nohr
-di (.2245353  - (  .3861749 ))/(sqrt((.1085306)^2+( .1085454  )^2))
+di (.2217683 - ( .3939796 ))/(sqrt((.1084438)^2+(.1087951)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.cva, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.cva, nohr
-di ( .2016675  - ( .1642933 ))/(sqrt((.1383535)^2+(.1508146  )^2))
+di ( .1791597  - (.1962261))/(sqrt((.1356221)^2+( .1461018 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.aa_usage , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.aa_usage , nohr
-di ( .4531523  - ( .3710136 ))/(sqrt((.1253254)^2+( .127052  )^2))
+di (.4484519  - ( .3678537))/(sqrt((.1252471)^2+( .1273875)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.bb_usage , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.bb_usage , nohr
-di (.1692148  - ( -.3293573 ))/(sqrt(( .1416137 )^2+(  .1231425 )^2))
+di (.1703995  - ( -.3267419 ))/(sqrt(( .1414729  )^2+( .1229645 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef , nohr
-di (.1692148  - ( -.1943237))/(sqrt(( .0549633 )^2+( .0636763)^2))
-di ( -.1943237  - ( -.3013776))/(sqrt(( .0549633 )^2+( .0636763)^2))
-mi stset ttcompev, id(study_id) failure(compev==1)
+di (-.1892308 - ( -.2951747))/(sqrt(( .0550386  )^2+( .0636054)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.nyha , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.nyha , nohr
-di (  .213436 - ( .4818944 ))/(sqrt((.1377188)^2+( .1698902)^2))
-di ( .3259127  - (.9178136))/(sqrt((.1386501)^2+(.1657768)^2))
-di ( .2485975   - ( 1.463442))/(sqrt(( .3252674 )^2+(.2436959)^2))
+di (.1941509 - (  .4840713))/(sqrt(( .139848)^2+(.1692239)^2))
+di (.3054747 - ( .9202167 ))/(sqrt((.1409748)^2+(.1652322)^2))
+di ( .2432532 - (  1.469343 ))/(sqrt((.3243171)^2+(.2416546 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zegfr , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zegfr , nohr
-di ( -.1766593  - (  -.4409069))/(sqrt((.0534025)^2+(.0653462)^2))
+di (  -.1797066 - ( -.4379407 ))/(sqrt(( .0535174 )^2+( .0637136 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.ACEI , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.ACEI , nohr
-di ( .129345  - ( -.30513))/(sqrt(( .1007814)^2+(.1021729)^2))
+di ( .1126737 - ( -.3562873))/(sqrt(( .0986905)^2+( .1039638)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.ARB , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.ARB , nohr
-di (   -.1994261  - ( -.0678804))/(sqrt((  .124116)^2+( .1271094)^2))
+di (  -.1881015  - ( -.0600245))/(sqrt((.1237869)^2+(.1297993)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.icd_type , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.icd_type , nohr
-di (  -.028832  - (  -.2012047))/(sqrt((  .120622)^2+(.1352665)^2))
-di (  -.2714174 - (-.0894969))/(sqrt((  .1249708 )^2+(.1289659)^2))
-di ( .8628325 - ( -.0761297))/(sqrt(( .4409793 )^2+(.9951813)^2))
+di (  -.2677608  - (.0185297))/(sqrt((.1124283)^2+(.1074809 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zvtzone , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zvtzone , nohr
-di (  -.2230387 - ( .0316657))/(sqrt((  .0661154 )^2+(.0619399)^2))
+di ( -.2831322 - (.0195767))/(sqrt(( .0595454)^2+( .0637827)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zvfzone , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zvfzone , nohr
-di (  .0567697 - (  .0248766 ))/(sqrt((.0252814 )^2+(.0505902)^2))
+di ( -.1287059  - ( .0726438  ))/(sqrt((.067616 )^2+( .0705023)^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.progr , nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.progr , nohr
+di (.4639906- (   .0451561 ))/(sqrt(( .142192)^2+(.1348939)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.mi , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.mi , nohr
-di ( .2889083 - (  .2456935 ))/(sqrt((.0963455)^2+(.10343)^2))
+di (.2903407 - (  .2440839 ))/(sqrt((.0962791)^2+(.1032216)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.revascularization , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.revascularization , nohr
-di ( .2496289 - ( .2221941 ))/(sqrt((.0949224)^2+(.1004114)^2))
+di (  .2492734 - ( .2192051 ))/(sqrt((.0950692)^2+(.100238)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.ccbs , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.ccbs , nohr
-di ( -.2323825 - ( .0815354 ))/(sqrt((.1795314)^2+( .1696953)^2))
+di ( -.2740368 - ( .0444144 ))/(sqrt(( .1806208)^2+( .1721293)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.AldosteroneAnt , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.AldosteroneAnt , nohr
-di ( .1358 - (  -.0720608 ))/(sqrt(( .1001189)^2+(.113187 )^2))
+di (.1214244- (  -.0570493 ))/(sqrt((.0998127)^2+( .1178864 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zbun , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zbun , nohr
-di ( .1147518- ( .3595239 ))/(sqrt((  .0447831)^2+( .0378802 )^2))
+di ( .1082354- ( .3572516 ))/(sqrt((  .0450671)^2+( .0390053 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.atp , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.atp , nohr
-di (  -.1654739- ( -.2709682 ))/(sqrt(( .1488495)^2+(.1295142 )^2))
+di (-.0718657- ( -.2486378))/(sqrt((.1522698)^2+(.1305217)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.vt_zone_option , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
 mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place ib2.vt_zone_option , nohr
-di (  -.0266696- ( -.3245812 ))/(sqrt((.1732226)^2+( .1473253 )^2))
+di ( -.0636392- (  -.2414695 ))/(sqrt((.1743752)^2+( .1545653  )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place znidnum , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zHR , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place znidnum , nohr
-di (-.1066679- ( -.0904314))/(sqrt(( .0721655)^2+( .0746446 )^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zHR , nohr
+di ( .0931646 - ( .2662303 ))/(sqrt((.0477813)^2+(.049105 )^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zaQRSTa , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zaQRSTa , nohr
-di ( .179888- ( .1916271 ))/(sqrt((.0534164)^2+(  .059497 )^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany , nohr
+di ( .3264949  - (-.0059427 ))/(sqrt((.1098499)^2+(.122386)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zSAI , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zQTch, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zSAI , nohr
-di (  -.120238- (  -.0273951 ))/(sqrt(( .0505618)^2+(.0520563 )^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zQTch, nohr
+di (  -.0779742 - ( .0650906  ))/(sqrt(( .049529)^2+(.0514384)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zaSVGel , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zQRS, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zaSVGel , nohr
-di (   .1404696- (  .0496008 ))/(sqrt(( .0451047)^2+( .0503488)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zQRS, nohr
+di (  -.0192575 - (-.0148572))/(sqrt((.0418891)^2+(.048689)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zaSVGaz , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaQRSTa, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zaSVGaz , nohr
-di (   -.010938- (  .0788198 ))/(sqrt(( .0466766)^2+(  .050372)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaQRSTa, nohr
+di ( .1655097 - (.15817 ))/(sqrt((.0533446)^2+(.0588672)^2))
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zSVGmag , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpQRSTa, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zSVGmag , nohr
-di ( -.345104- (  -.2353622 ))/(sqrt(( .0576111)^2+(  .06156)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpQRSTa, nohr
+di (.1041897 - (.1519898 ))/(sqrt(( .0490638)^2+(.0564743)^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zSAI, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zSAI, nohr
+di ( -.1149993 - (-.0351797 ))/(sqrt((.0513099)^2+(.0514828 )^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zVMQTi, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zVMQTi, nohr
+di ( -.1235559 - (-.0416539))/(sqrt((.0514166)^2+(.0512185 )^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaSVGel, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaSVGel, nohr
+di (.1230777 - ( .0343785))/(sqrt((.0458954)^2+( .0508879 )^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGel, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGel, nohr
+di ( .0932389 - ( .0544262))/(sqrt(( .0481985 )^2+(  .0541027 )^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaSVGmag, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zaSVGmag, nohr
+di ( -.331357 - (  -.2094642))/(sqrt((  .0594112 )^2+(.0614822 )^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGmag, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGmag, nohr
+di ( -.0875239 - (  -.0934896))/(sqrt((  .0526778 )^2+( .0619311  )^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR zpSVGaz, nohr
+di ( .111844  - ( -.0560679))/(sqrt((  .0523209 )^2+(  .0532735)^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib1.qaSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib1.qaSVGaz, nohr
+di ( -.1754239  - (.155554))/(sqrt(( .1164011)^2+(.1272645)^2))
+di (.0501646  - (.2773898))/(sqrt((.1121421)^2+(.1277821)^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib1.q4aSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib1.q4aSVGaz, nohr
+di (-.1897753  - (.0785203))/(sqrt((.1323555)^2+(.1501698)^2))
+di (-.0767691  - (.2305638))/(sqrt((.1294069)^2+( .146507)^2))
+di (-.0186419  - (.325938))/(sqrt((.129994)^2+(.1470045)^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib2.q4aSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib2.q4aSVGaz, nohr
+di (.1897753  - ( -.0785203))/(sqrt(( .1323555)^2+(.1501698)^2))
+di (.1130062  - (.1520435))/(sqrt(( .1334879)^2+(.1444428)^2))
+di (.1711335  - (.2474176 ))/(sqrt((.1367663)^2+(.1480284)^2))
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib2.qaSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place i.PVCany i.PVCdistort zRR ib2.qaSVGaz, nohr
+di ( .1754239  - ( -.155554))/(sqrt((.1164011)^2+( .1272645)^2))
+di (  .2255885  - ( .1218358 ))/(sqrt((.118211 )^2+( .1260855 )^2))
 
 ***difference in model 3
+***model 3
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaSVGel , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaSVGel , nohr
-di (  .1539695- ( .0394742 ))/(sqrt((.0450053)^2+( .0520884)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr , nohr
+di (  -.219258  - (  .274563 ))/(sqrt((.0586002 )^2+( .066486 )^2))
+di ( .4749006  - ( .1452189 ))/(sqrt((.1368216 )^2+( .1343807 )^2))
+di ( .3111573  - ( -.0135594 ))/(sqrt(( .1616148 )^2+( .1978612 )^2))
+di ( .1252017   - (.3709558 ))/(sqrt(( .1253739 )^2+( .1207167 )^2))
+di ( -.0423439   - ( -.0300141 ))/(sqrt((  .1083084  )^2+( .1241238 )^2))
+di (  -.1102638   - (  .3739846 ))/(sqrt((   .0971542  )^2+(  .1018255 )^2))
+di (  .0653167   - (  .2815901 ))/(sqrt((  .1189895  )^2+(  .119573  )^2))
+di (  .169051   - ( .1564477 ))/(sqrt((  .1401823  )^2+(  .1502423   )^2))
+di (   .3350839   - ( .0733938 ))/(sqrt(( .1393444  )^2+(  .1407533   )^2))
+di (   .1504919  - (  -.2946667))/(sqrt(( .1460766  )^2+(  .127627   )^2))
+di (   .1504919  - (  -.2946667))/(sqrt(( .1460766  )^2+(  .127627   )^2))
+di (   -.1384101  - ( -.1983762))/(sqrt(( .0597278  )^2+(  .0683076   )^2))
+di (   .1799148  - (  .4800025))/(sqrt((.1468353  )^2+( .1743806 )^2))
+di (  .3127618   - (   .794271))/(sqrt((.1583285  )^2+(  .1814753 )^2))
+di (   .1233228   - (  1.248717))/(sqrt(( .3385304  )^2+(  .2562088 )^2))
+di (   -.1287153   - ( -.2967007))/(sqrt(( .0566095  )^2+( .0648168 )^2))
+di ( .0138481 - ( -.4291395))/(sqrt((.1209012 )^2+( .1258226 )^2))
+di ( -.091358 - (  -.2334048))/(sqrt((.1524743 )^2+( .1591186 )^2))
+di (  -.3930927 - ( -.2642995))/(sqrt((.1261527 )^2+( .1207717 )^2))
+di ( -.2849423 - (  .0462514))/(sqrt(( .0696065 )^2+( .0764098 )^2))
+di (  .0697077 - (  .0446652))/(sqrt(( .0832708 )^2+(.0872622 )^2))
+di (  .4475445 - (  .0272988))/(sqrt(( .1534841 )^2+(.1437664 )^2))
+
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaQRSTa , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.mi , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaQRSTa , nohr
-di (  .198785- ( .1891057 ))/(sqrt((.0579494)^2+(.0669751)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.mi , nohr
+di ( .1862358 - (  -.0332618))/(sqrt((  .1580238 )^2+( .1579805 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zSAI , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.revascularization , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zSAI , nohr
-di (  -.0644255- ( .0261313 ))/(sqrt(( .0576675)^2+( .056695)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.revascularization , nohr
+di (  .2071459 - (  -.0638406))/(sqrt((  .1303022 )^2+( .1288841  )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zSVGmag , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.ccbs, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zSVGmag , nohr
-di ( -.2944214- (-.1535932))/(sqrt(( .060613)^2+( .0658771)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.ccbs, nohr
+di (  -.2127329 - ( .0727201))/(sqrt(( .1842713 )^2+(  .176767  )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaSVGaz , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr i.AldosteroneAnt , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zaSVGaz , nohr
-di (  -.0106959- ( .0422862))/(sqrt(( .0470357)^2+(.0513282)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr i.AldosteroneAnt, nohr
+di (  .06932 - (-.2383088))/(sqrt((  .1056659 )^2+(  .1221559 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone znidnum , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zbun , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone znidnum , nohr
-di (  -.0877531- ( -.1034895))/(sqrt(( .0774905)^2+( .0892584)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zbun , nohr
+di ( .0122987 - ( .2050029))/(sqrt(( .0662586 )^2+(  .0594425 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.vt_zone_option , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.atp , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.vt_zone_option , nohr
-di ( .056014- (  -.3602711))/(sqrt((  .1898865)^2+(  .1640725)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.atp , nohr
+di (.0833832 - (-.2477423))/(sqrt((.1682274 )^2+(  .1403229 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.atp , nohr
+mi estimate: stcox  zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.vt_zone_option , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.atp , nohr
-di ( -.0532501- (  -.27973))/(sqrt(( .1517522)^2+( .1386747)^2))
+mi estimate: stcox  zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr ib2.vt_zone_option , nohr
+di (.0276375 - ( -.4252888))/(sqrt(( .2378376 )^2+(   .208915 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zbun , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zHR, nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone zbun , nohr
-di ( -.0026547- (.2020891 ))/(sqrt(( .0661319)^2+(.0586275)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zHR, nohr
+di (.0929172 - (  .1426214))/(sqrt(( .0522402  )^2+(   .0539421 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.AldosteroneAnt , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr i.PVCany , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.AldosteroneAnt , nohr
-di (  .0661527- ( -.2462684 ))/(sqrt((  .1064951)^2+( .1167129)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr i.PVCany , nohr
+di (.3906081 - (  .0403305 ))/(sqrt(( .1137384  )^2+(  .1273707 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.ccbs , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zRR i.PVCdistort i.PVCany zQRS , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.ccbs , nohr
-di ( -.1975724- ( .1136879))/(sqrt((  .1878621)^2+( .1748677)^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zRR i.PVCdistort i.PVCany zQRS , nohr
+di ( .0217773 - (-.0119112))/(sqrt((  .0478125 )^2+( .0549478 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.revascularization , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zRR i.PVCdistort i.PVCany zQTch , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.revascularization , nohr
-di (  .1691533 - (-.0888844))/(sqrt(( .1327428)^2+( .1303727 )^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr  zRR i.PVCdistort i.PVCany zQTch, nohr
+di ( -.0774873 - (.0071599))/(sqrt(( .0534968 )^2+( .0559594 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.mi , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaQRSTa , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone ib2.mi , nohr
-di (  .1637547 - ( -.1063144))/(sqrt(( .1830822)^2+( .1642024 )^2))
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaQRSTa , nohr
+di ( .190698  - ( .1674827))/(sqrt(( .0575444 )^2+( .0656195 )^2))
+
 mi stset ttcompev, id(study_id) failure(compev==1)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpQRSTa , nohr
 mi stset ttcompev, id(study_id) failure(compev==2)
-mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone , nohr
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpQRSTa , nohr
+di ( .1296931  - ( .1497209))/(sqrt(( .0533799 )^2+( .061981 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaSVGel , nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaSVGel , nohr
+di ( .1365434  - ( .0300067))/(sqrt((.0457961 )^2+( .0519536 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGel , nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGel , nohr
+di ( .0990088  - ( .0202934))/(sqrt((.0485743 )^2+( .0549944 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zSAI , nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zSAI , nohr
+di (  -.0515902  - ( .0155274))/(sqrt((.0579721 )^2+( .0582115 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zVMQTi, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zVMQTi, nohr
+di (  -.0622273  - ( .0099567))/(sqrt((.0589909 )^2+( .0588794 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaSVGmag, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zaSVGmag, nohr
+di ( -.2700643  - ( -.1382812))/(sqrt((.0629746 )^2+(  .0648234 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGmag, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGmag, nohr
+di (  -.047343  - ( .0013157 ))/(sqrt(( .0540143 )^2+( .0626172 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany zpSVGaz, nohr
+di (  .1148979  - (-.0900317 ))/(sqrt((.0533033 )^2+( .0537329 )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany ib1.qaSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany ib1.qaSVGaz, nohr
+di ( -.1394709  - (.1658044 ))/(sqrt(( .1242763 )^2+(.1366097  )^2))
+di (  .0406304   - (.1952812 ))/(sqrt(( .1176575 )^2+( .1339413  )^2))
+
+mi stset ttcompev, id(study_id) failure(compev==1)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany ib1.q4aSVGaz, nohr
+mi stset ttcompev, id(study_id) failure(compev==2)
+mi estimate: stcox zage ib2.sex i.race i.mbeat3 i.place zlvef i.nyha ib2.cm ib2.htn ib2.diabetes ib2.cva ib2.af zegfr ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type zvtzone zvfzone i.progr zRR i.PVCdistort i.PVCany ib1.q4aSVGaz, nohr
+di (  -.1308446   - (.1054632 ))/(sqrt(( .13983 )^2+( .158385  )^2))
+di ( -.0290665   - (.1972884 ))/(sqrt((  .1395713 )^2+( .155859  )^2))
+di ( -.0221028   - (.2455506 ))/(sqrt(( .1368771 )^2+( .155158  )^2))
 
 ****score replication
 mi passive: gen sqrtSVGel=sqrt( areaSVGElevation_deg)
