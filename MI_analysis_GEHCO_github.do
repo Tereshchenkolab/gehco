@@ -744,4 +744,26 @@ mi passive: gen GEHscore = 1 - (0. 999966^exp(beta))
 mi estimate : proportion qGEHscore
 mi estimate : proportion score
 
-
+ ***test for multicollinearity using predictor variables only February 2021
+ help collin
+ mi unset
+ 
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr mi
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr revascularization
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr ccbs
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr AldosteroneAnt
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr bun
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr atp
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr vt_zone_option
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr areaQRSTAngle_deg
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr peakQRSTAngle_deg
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr SAIQRST
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr VMQTint_mVms
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr pSVGaz
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr aSVGaz
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr areaSVGElevation_deg
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr peakSVGElevation_deg
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr areaSVG_mVms
+collin agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr peakSVGMagnitude_mV
+corr agey sex race  place mbeat3 exact_lvef nyha cm htn diabetes cva af egfr bb_usage aa_usage ACEI ARB manufacturer icd_type vt_zone_bpm vf_zone_bpm QTch HRbpm QRSduration_ms PVCdistort PVCany progr
