@@ -745,6 +745,7 @@ mi estimate : proportion qGEHscore
 mi estimate : proportion score
 
  ***test for multicollinearity using predictor variables only February 2021
+ ***use the dataset with missing values (M=0) that was used for preparation (before MI)
  help collin
  mi unset
  
