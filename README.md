@@ -14,7 +14,4 @@ See file MI_prep_GEHCO_github.do for preparation and execution of multiple imput
 One 
 
 ### Manuscripts to reference:
-Preprint:
-Competing Risks in Patients with Primary Prevention Implantable Cardioverters Defibrillators: Global Electrical Heterogeneity and Clinical Outcomes (GEHCO) Study
-Jonathan W. Waks, Kazi T. Haq, Christine Tompkins, Albert J. Rogers, Ashkan Ehdaie, Aron Bender, Jessica Minnier, Khidir Dalouk, Stacey Howell, Achille Peiris, Merritt Raitt, Sanjiv M. Narayan, Sumeet S. Chugh, Larisa G. Tereshchenko. medRxiv 2020.12.16.20248369; doi: https://doi.org/10.1101/2020.12.16.20248369
-
+Waks JW, Haq KT, Tompkins C, Rogers AJ, Ehdaie A, Bender A, Minnier J, Dalouk K, Howell S, Peiris A, Raitt M, Narayan SM, Chugh SS, Tereshchenko LG. Competing risks in patients with primary prevention implantable cardioverter-defibrillators: Global Electrical Heterogeneity and Clinical Outcomes study. Heart Rhythm. 2021 Jun;18(6):977-986. doi: 10.1016/j.hrthm.2021.03.006. Epub 2021 Mar 6. PubMed PMID: 33684549; PubMed Central PMCID: PMC8169548.
