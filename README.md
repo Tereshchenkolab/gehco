@@ -1,8 +1,8 @@
 # GEHCO
 ## Table of Content
   - study data: Global Electrical Heterogeneity and Clinical Outcomes NCT03210883 https://clinicaltrials.gov/ct2/show/NCT03210883
-  - STATA code for statistical analyses
-  - R code for risk calculators
+  - STATA code for statistical analyses (author Larisa Tereshchenko)
+  - R code for risk calculators (author Shivangi Kewalramani)
   
 ### Authors
 Larisa Tereshchenko, MD, PhD, <tereshl@ccf.org>
