@@ -9,8 +9,8 @@ Larisa Tereshchenko, MD, PhD, <tereshl@ccf.org>
 Last update: October 7, 2023
   
 ### STATA and R Code
-Manuscript #1: See file MI_prep_GEHCO_github.do for preparation and execution of multiple imputations. See file MI_analysis_GEHCO_github.do for analysis using imputed dataset. 
-Manuscript #2 (competing risk of MMVT and PVT/VF): see file MMVT_PVTVF_GEHCO_github.do
+# Manuscript #1: See file MI_prep_GEHCO_github.do for preparation and execution of multiple imputations. See file MI_analysis_GEHCO_github.do for analysis using imputed dataset. 
+# Manuscript #2 (competing risk of MMVT and PVT/VF): see file MMVT_PVTVF_GEHCO_github.do
 
  
 
