@@ -1,5 +1,7 @@
 library(shiny)
 library(DT)
+library(shinyWidgets)
+library(shinyjs)
 predict.risk.MMVT <- expression({
   lp <- 1-0.8292047^exp(
     (-0.0128423)*agey +
@@ -7,8 +9,8 @@ predict.risk.MMVT <- expression({
     (0.3555537)*(race=="Black") +
     (-0.0329191)*(race=="Asian") +
     (-1.101491)*(race=="Hispanic White") +
-    (0.1841201)*(mbeat3=="Atrial fibrillation or flutter (S)") +
-    (-0.0784277)*(mbeat3=="Ventricular pacing (V)") +
+    (0.1841201)*(mbeat3=="Atrial fibrillation or flutter") +
+    (-0.0784277)*(mbeat3=="Ventricular pacing") +
     (-0.0117005)*(nyha=="Class II") +
     (0.0617539)*(nyha=="Class III") +
     (-0.1384314)*(nyha=="Class IV") +
@@ -55,8 +57,8 @@ predict.risk.PVT <- expression({
     (0.504096)*(race=="Black") +
     (-0.6964255)*(race=="Asian") +
     (-0.3193676)*(race=="Hispanic White") +
-    (0.0754162)*(mbeat3=="Atrial fibrillation or flutter (S)") +
-    (-0.5178345)*(mbeat3=="Ventricular pacing (V)") +
+    (0.0754162)*(mbeat3=="Atrial fibrillation or flutter") +
+    (-0.5178345)*(mbeat3=="Ventricular pacing") +
     (0.2393885)*(nyha=="Class II") +
     (0.3612647)*(nyha=="Class III") +
     (-0.4772228)*(nyha=="Class IV") +
@@ -97,9 +99,8 @@ predict.risk.PVT <- expression({
 
 library(shiny)
 shinyServer(function(input, output){
-
   data <- eventReactive(input$goButton, {
-    # #validate(need(!is.na(as.numeric(input$Age))& as.numeric(input$Age)>=18& as.numeric(input$Age)<=90, 'Please input a valid Age'))
+    validate(need(!is.na(as.numeric(input$agey))& as.numeric(input$agey)>=18& as.numeric(input$agey)<=100, 'Please input a valid Age.'))
     agey= as.numeric(input$agey)
     sex = factor(input$sex, levels = c('Female', 'Male'))
     race = factor(input$race, levels = c('Non-Hispanic White','Hispanic White', 'Black','Asian'))
@@ -110,8 +111,11 @@ shinyServer(function(input, output){
     mi = factor(input$mi, levels = c('No', 'Yes'))
     revascularization = factor(input$revascularization, levels = c('No', 'Yes'))
     nyha = factor(input$nyha, levels = c('Class I','Class II', 'Class III','Class IV'))
+    validate(need(!is.na(as.numeric(input$exact_lvef))& as.numeric(input$exact_lvef)>=7 & as.numeric(input$exact_lvef)<=54, 'Please input a valid Left Ventricular Ejection Fraction (%).'))
     exact_lvef= as.numeric(input$exact_lvef)
+    validate(need(!is.na(as.numeric(input$bun))& as.numeric(input$bun)>=2 & as.numeric(input$bun)<=51, 'Please input a valid BUN (mg/dL).'))
     bun= as.numeric(input$bun)
+    validate(need(!is.na(as.numeric(input$egfr))& as.numeric(input$egfr)>=0.5 & as.numeric(input$egfr)<=121, 'Please input a valid eGFR CKD-EPI (mL/min/1.73 m^2.'))
     egfr= as.numeric(input$egfr)
     bb_usage = factor(input$bb_usage, levels = c('No', 'Yes'))
     aa_usage = factor(input$aa_usage, levels = c('No', 'Yes'))
@@ -123,17 +127,27 @@ shinyServer(function(input, output){
     icd_type=factor(input$icd_type, levels =  c('ICD/S-ICD', 'CRT-D'))
     atp = factor(input$atp, levels = c('OFF', 'ON'))
     progr = factor(input$progr, levels = c('Historic Convention', 'Delayed Therapy'))
+    validate(need(!is.na(as.numeric(input$vt_zone_bpm))& as.numeric(input$vt_zone_bpm)>=105 & as.numeric(input$vt_zone_bpm)<=190, 'Please input a valid VT zone cut-off (bpm).'))
     vt_zone_bpm= as.numeric(input$vt_zone_bpm)
+    validate(need(!is.na(as.numeric(input$vf_zone_bpm))& as.numeric(input$vf_zone_bpm)>=188 & as.numeric(input$vf_zone_bpm)<=300, 'Please input a valid VF zone cut-off (bpm).'))
     vf_zone_bpm= as.numeric(input$vf_zone_bpm)
-    mbeat3=factor(input$mbeat3, levels = c('Normal sinus (N)','Atrial fibrillation or flutter (S)','Ventricular pacing (V)'))
+    mbeat3=factor(input$mbeat3, levels = c('Normal sinus','Atrial fibrillation or flutter','Ventricular pacing'))
+    validate(need(!is.na(as.numeric(input$HRbpm))& as.numeric(input$HRbpm)>=38 & as.numeric(input$HRbpm)<=148, 'Please input a valid Heart rate (bpm).'))
     HRbpm= as.numeric(input$HRbpm)
     PVCany = factor(input$PVCany, levels = c('No', 'Yes'))
+    validate(need(!is.na(as.numeric(input$QTch))& as.numeric(input$QTch)>=382 & as.numeric(input$QTch)<=535, 'Please input a valid Hodges-corrected QT interval (ms).'))
     QTch= as.numeric(input$QTch)
+    validate(need(!is.na(as.numeric(input$QRSduration_ms))& as.numeric(input$QRSduration_ms)>=50 & as.numeric(input$QRSduration_ms)<=230, 'Please input a valid QRS duration (ms).'))
     QRSduration_ms= as.numeric(input$QRSduration_ms)
+    validate(need(!is.na(as.numeric(input$areaQRSTAngle_deg))& as.numeric(input$areaQRSTAngle_deg)>=2 & as.numeric(input$areaQRSTAngle_deg)<=179, 'Please input a valid Spatial QRS-T angle (degrees).'))
     areaQRSTAngle_deg= as.numeric(input$areaQRSTAngle_deg)
+    validate(need(!is.na(as.numeric(input$areaSVGElevation_deg))& as.numeric(input$areaSVGElevation_deg)>=3 & as.numeric(input$areaSVGElevation_deg)<=177, 'Please input a valid Spatial Ventricular Gradient Elevation (degrees).'))
     areaSVGElevation_deg=as.numeric(input$areaSVGElevation_deg)
+    validate(need(!is.na(as.numeric(input$aSVGaz))& as.numeric(input$aSVGaz)>=(-179) & as.numeric(input$aSVGaz)<=(+179), 'Please input a valid Spatial Ventricular Gradient Azimuth (degrees).'))
     aSVGaz=as.numeric(input$aSVGaz)
+    validate(need(!is.na(as.numeric(input$areaSVG_mVms))& as.numeric(input$areaSVG_mVms)>=1 & as.numeric(input$areaSVG_mVms)<=312, 'Please input a valid Spatial Ventricular Gradient magnitude (mVms).'))
     areaSVG_mVms=as.numeric(input$areaSVG_mVms)
+    validate(need(!is.na(as.numeric(input$SAIQRST))& as.numeric(input$SAIQRST)>=34 & as.numeric(input$SAIQRST)<=824, 'Please input a valid Sum Absolute QRST integral (mVms).'))
     SAIQRST=as.numeric(input$SAIQRST)
     
     data <- data.frame(agey = agey,
