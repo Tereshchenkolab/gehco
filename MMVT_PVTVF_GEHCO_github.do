@@ -350,7 +350,7 @@ lassoknots
 lassocoef cv, display(coef)
 cvplot
 
-***final Fine-Gray competing risk models using imputed dataset (M66)
+***Fine-Gray competing risk models using imputed dataset (M66)
 mi stset ttcompev, id(study_id) failure(VTtype==1)
 mi estimate, saving(miest_mmvt): stcrreg c.agey ib2.sex i.race i.mbeat3  i.nyha ib2.htn ib2.diabetes ib2.cva ib2.af ib2.bb_usage ib2.aa_usage i.ACEI i.ARB i.manufacturer i.icd_type vt_zone_bpm vf_zone_bpm HRbpm ib2.progr  i.PVCany QTch ib2.revascularization ib2.mi i.ccbs i.AldosteroneAnt c.bun ib2.atp  c.areaQRSTAngle_deg c.areaSVGElevation_deg c.areaSVG_mVms c.SAIQRST exact_lvef  QRSduration_ms aSVGaz egfr, compete(VTtype==2 3 4)
 
